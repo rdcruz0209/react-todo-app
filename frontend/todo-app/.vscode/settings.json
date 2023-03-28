@@ -1,0 +1,4 @@
+{
+  "prettier.semi": true,
+  "java.format.settings.url": "eclipse-formatter.xml"
+}
