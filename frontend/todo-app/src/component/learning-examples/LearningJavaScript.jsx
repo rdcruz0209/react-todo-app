@@ -12,12 +12,15 @@ const person = {
   profiles: ['twitter', 'linkedin', 'instagram'],
 
   printProfile: () => {
+    // eslint-disable-next-line array-callback-return
     person.profiles.map((profiles) => {
-      console.log(profiles);
-    });
-    console.log(person.profiles[0]);
+      // eslint-disable-next-line no-console
+      console.log(profiles)
+    })
+    // eslint-disable-next-line no-console
+    console.log(person.profiles[0])
   },
-};
+}
 
 export default function LearningJavaScript() {
   return (
@@ -32,5 +35,5 @@ export default function LearningJavaScript() {
       <div>{person.profiles[1]}</div>
       <div>{person.printProfile()}</div>
     </>
-  );
+  )
 }

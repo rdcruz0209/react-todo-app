@@ -1,8 +1,11 @@
 // import {useState} from "react";
-import "./Counter.css";
-import {PropTypes} from "prop-types";
+import './Counter.css'
+import { PropTypes } from 'prop-types'
 
-export default function CounterButton({by, incrementMethod, decrementMethod}) {
+export default function CounterButton({ by, incrementMethod, decrementMethod }) {
+  // this function works  by requiring a parameters to be passed in whenever this Component is called
+  // in the Counter Component, the by and methods are provided in the <CounterButton> tags
+
   // [0, ƒ]
   // const [count, setCount] = useState(0);
 
@@ -26,13 +29,13 @@ export default function CounterButton({by, incrementMethod, decrementMethod}) {
         </button>
       </div>
     </div>
-  );
+  )
 }
 
 CounterButton.propTypes = {
   by: PropTypes.number,
-};
+}
 
 CounterButton.defaultProps = {
   by: 5,
-};
+}

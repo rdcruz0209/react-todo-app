@@ -1,5 +1,5 @@
 function SecondComponent() {
-  return <div className="SecondComponent">Second Component</div>;
+  return <div className="SecondComponent">Second Component</div>
 }
 
-export default SecondComponent;
+export default SecondComponent

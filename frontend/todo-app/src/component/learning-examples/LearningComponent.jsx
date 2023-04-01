@@ -1,10 +1,11 @@
-import {Component} from 'react';
-import FirstComponent from './FirstComponent';
-import SecondComponent from './SecondComponent';
-import ThirdComponent from './ThirdComponent';
-import FourthComponent from './FourthComponent';
-import {FifthComponent} from './FirstComponent';
-import LearningJavaScript from './LearningJavaScript';
+// eslint-disable-next-line import/no-duplicates
+import FirstComponent from './FirstComponent'
+import SecondComponent from './SecondComponent'
+import ThirdComponent from './ThirdComponent'
+import FourthComponent from './FourthComponent'
+// eslint-disable-next-line import/no-duplicates
+import { FifthComponent } from './FirstComponent'
+import LearningJavaScript from './LearningJavaScript'
 
 export default function LearningComponent() {
   return (
@@ -16,5 +17,5 @@ export default function LearningComponent() {
       <FifthComponent></FifthComponent>
       <LearningJavaScript></LearningJavaScript>
     </div>
-  );
+  )
 }

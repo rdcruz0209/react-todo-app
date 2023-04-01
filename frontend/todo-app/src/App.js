@@ -1,12 +1,12 @@
-import "./App.css";
-import TodoApp from "./component/todo/TodoApp";
+import './App.css'
+import TodoApp from './component/todo/TodoApp'
 
 function App() {
   return (
     <div className="App">
       <TodoApp></TodoApp>
     </div>
-  );
+  )
 }
 
 // function PlayingWithProps(props) {
@@ -22,4 +22,4 @@ function App() {
 //   return <div>Props</div>;
 // }
 
-export default App;
+export default App
