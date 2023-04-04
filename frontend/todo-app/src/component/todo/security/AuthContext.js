@@ -11,18 +11,24 @@ export function useAuth() {
 }
 
 export default function AuthProvider({ children }) {
-  const [number, setNumber] = useState(0)
   const [isAuthenticated, setAuthenticated] = useState(false)
+
   // const valueToBeShared = { number, isAuthenticated, setAuthenticated }
 
-  // setInterval(
-  //   () => setNumber(number + 1)
-  //   , 2000)
+  function login(username, password) {
+    if (password === 'password' && username === 'Robert') {
+      setAuthenticated(true)
+      return true
+    }
+    else {
+      setAuthenticated(false)
+      return false
+    }
+  }
 
-  // console.log(children)
-  return (
-        <AuthContext.Provider value ={ { number, isAuthenticated, setAuthenticated } }>
-            {children}
-        </AuthContext.Provider>
-  )
+  function logout() {
+    setAuthenticated(false)
+  }
+
+  return <AuthContext.Provider value={{ isAuthenticated, login, logout }}>{children}</AuthContext.Provider>
 }
