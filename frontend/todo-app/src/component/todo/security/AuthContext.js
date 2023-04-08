@@ -11,13 +11,16 @@ export function useAuth() {
 }
 
 export default function AuthProvider({ children }) {
+  //
   const [isAuthenticated, setAuthenticated] = useState(false)
+  const [username, setUsername] = useState(null)
 
   // const valueToBeShared = { number, isAuthenticated, setAuthenticated }
 
   function login(username, password) {
     if (password === 'password' && username === 'Robert') {
       setAuthenticated(true)
+      setUsername(username)
       return true
     }
     else {
@@ -30,5 +33,5 @@ export default function AuthProvider({ children }) {
     setAuthenticated(false)
   }
 
-  return <AuthContext.Provider value={{ isAuthenticated, login, logout }}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={{ isAuthenticated, login, logout, username }}>{children}</AuthContext.Provider>
 }

@@ -5,6 +5,7 @@ import { retrieveHelloWorldPathVariable } from './api/HelloWorldApiService'
 
 export default function WelcomeComponent() {
   const { username } = useParams()
+
   const [message, setMessage] = useState(null)
 
   function callHelloWorldRestApi() {
