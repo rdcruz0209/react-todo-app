@@ -16,6 +16,7 @@ export default function ListTodosComponent() {
   const navigate = useNavigate()
 
   useEffect(
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     () => refreshTodos(), [],
   )
 
@@ -29,7 +30,7 @@ export default function ListTodosComponent() {
       .finally(() => console.log('cleanup'))
   }
 
-  function deleteTodo(id) {
+  function deleteTodo(username, id) {
     deleteTodoApiCall(username, id)
       .then(
         () => {
@@ -43,8 +44,11 @@ export default function ListTodosComponent() {
   }
 
   function updateTodo(id) {
-    console.log(`clicked ${id}`)
     navigate(`/todo/${id}`)
+  }
+
+  function addNewTodo() {
+    navigate('/todo/-1')
   }
 
   return (
@@ -63,20 +67,21 @@ export default function ListTodosComponent() {
             </tr>
           </thead>
           <tbody>
-            {todos.map(todo => (
+            {todos.map(
+              todo => (
               <tr key={todo.id}>
                 <td>{todo.description}</td>
-                <td>{todo.status.toString()}</td>
+                <td>{todo.isCompleted.toString()}</td>
                 <td>{todo.targetDate}</td>
-                <td><button className='btn btn-warning' onClick={() => deleteTodo(username, todo.id)}>Delete</button></td>
-                <td><button className='btn btn-success' onClick={() => updateTodo(todo.id)}>Update</button></td>
+                <td><button className='btn btn-warning' onClick={() => { deleteTodo(username, todo.id) }}>Delete</button></td>
+                <td><button className='btn btn-success' onClick={() => updateTodo(todo.id) }>Update</button></td>
               </tr>
-            ))}
-
+              ))}
           </tbody>
         </table>
         {todos.length === 0 && <div>You have No Todo</div>}
       </div>
+      <div className='btn btn-success m-4' onClick={addNewTodo}>Add New Todo</div>
     </div>
   )
 }

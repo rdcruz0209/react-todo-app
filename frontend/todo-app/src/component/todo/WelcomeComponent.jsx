@@ -2,25 +2,27 @@
 import { Link, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { retrieveHelloWorldPathVariable } from './api/HelloWorldApiService'
+import { useAuth } from './security/AuthContext'
 
 export default function WelcomeComponent() {
   const { username } = useParams()
+  const [response, setResponse] = useState()
 
-  const [message, setMessage] = useState(null)
+  const authContext = useAuth()
 
-  function callHelloWorldRestApi() {
-    retrieveHelloWorldPathVariable(username)
-      .then(response => successfulResponse(response))
-      .catch(error => errorResponse(error))
+  function calleHelloWorldRestApi() {
+    console.log('called')
+    retrieveHelloWorldPathVariable('Robert', authContext.token)
+      .then((response) => {
+        successfulResponse(response)
+        setResponse(response.data)
+      })
+      .catch(error => console.log(error))
       .finally(() => console.log('cleanup'))
   }
 
   function successfulResponse(response) {
     console.log(response)
-    setMessage(response.data.message)
-  }
-  function errorResponse(error) {
-    console.log(error)
   }
 
   return (
@@ -29,13 +31,10 @@ export default function WelcomeComponent() {
         <div className="Welcome">
           Manage Your todos <Link to="/todos">here</Link>.
         </div>
-        <div>
-          <button className="btn btn-success m-3" onClick={callHelloWorldRestApi}>Call Hello World REST API</button>
+        <div className='btn btn-success m-3' onClick={calleHelloWorldRestApi}>Hello World Rest API</div>
+        <div className="text-info m-3">
+        {response}
         </div>
-        <div className="text-info">
-          { message }
-        </div>
-
       </div>
   )
 }
