@@ -14,14 +14,6 @@ export function retrieveHelloWorldPathVariable(username, token) {
   )
 }
 
-export function executeBasicAuthenticationService(token) {
-  return apiClient.get('/basicauth', {
-    headers: {
-      Authorization: token,
-    },
-  })
-}
-
 // can also be written as:
 // export const retrieveHelloWorldBean
 // = () => axios.get('http://localhost:8080/hello-world-bean')
